@@ -8,7 +8,7 @@ public interface MyInterface {
 
     // uncomment this to get a full rebuild
 
-//    default String hello2(String input) {
-//        return "foo";
-//    }
+    default String hello2(String input) {
+        return "foo";
+    }
 }
