@@ -9,7 +9,7 @@ import jakarta.inject.Singleton;
 class MyInterfaceImpl implements MyInterface {
 
     public String hello(String input) {
-        return "foo".equals(input) ? "hello" : "HELLO";
-//        return "foo".equals(input.toLowerCase()) ? "hello" : "HELLO";
+//        return "foo".equals(input) ? "hello" : "HELLO";
+        return "foo".equals(input.toLowerCase()) ? "hello" : "HELLO";
     }
 }
