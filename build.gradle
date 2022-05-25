@@ -1,0 +1,49 @@
+plugins {
+    id 'java-library'
+}
+
+version = "0.1"
+group = "com.example"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    annotationProcessor platform("io.micronaut:micronaut-bom:$micronautVersion")
+    annotationProcessor 'io.micronaut:micronaut-inject-java'
+
+    implementation platform("io.micronaut:micronaut-bom:$micronautVersion")
+    implementation platform("org.apache.logging.log4j:log4j-bom:$log4jVersion")
+    implementation("io.micronaut:micronaut-http-client")
+    implementation("io.micronaut:micronaut-runtime")
+    implementation "io.micronaut:micronaut-http-server-netty"
+    implementation("jakarta.annotation:jakarta.annotation-api")
+    implementation("org.apache.logging.log4j:log4j-core")
+    implementation("org.apache.logging.log4j:log4j-api")
+    implementation("org.apache.logging.log4j:log4j-slf4j-impl")
+
+    testAnnotationProcessor platform("io.micronaut:micronaut-bom:$micronautVersion")
+    testAnnotationProcessor "io.micronaut:micronaut-inject-java"
+
+    testImplementation platform("io.micronaut:micronaut-bom:$micronautVersion")
+    testImplementation platform("org.junit:junit-bom:$junitVersion")
+    testImplementation 'io.micronaut.test:micronaut-test-core'
+    testImplementation 'io.micronaut.test:micronaut-test-junit5'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+}
+
+java {
+    sourceCompatibility = JavaVersion.toVersion("17")
+    targetCompatibility = JavaVersion.toVersion("17")
+}
+
+compileJava.options.compilerArgs += '-parameters'
+compileTestJava.options.compilerArgs += '-parameters'
+
+test {
+    useJUnitPlatform()
+}
+
+
