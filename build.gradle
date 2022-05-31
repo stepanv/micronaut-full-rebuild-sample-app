@@ -42,8 +42,18 @@ java {
 compileJava.options.compilerArgs += '-parameters'
 compileTestJava.options.compilerArgs += '-parameters'
 
+compileJava.options.compilerArgs += '-verbose'
+compileTestJava.options.compilerArgs += '-verbose'
+
 test {
     useJUnitPlatform()
+}
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs = [
+            '-Amicronaut.processing.incremental=true',
+            '-Amicronaut.processing.annotations=com.example.*',
+    ]
 }
 
 
